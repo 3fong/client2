@@ -1,16 +1,9 @@
 package com.zzlh.client.controller;
 
-import java.io.IOException;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.zzlh.client.util.HttpUtil;
 
 /**
  * @Description TODO
@@ -18,24 +11,24 @@ import com.zzlh.client.util.HttpUtil;
  * @date 2018年10月29日 下午2:02:38
  */
 
-@RestController
+@Controller
 public class CasSessionController {
 
+	/*
+	 * @RequestMapping("/logout") public void logout(HttpServletRequest request,
+	 * HttpServletResponse response) throws IOException {
+	 * response.sendRedirect("https://cas.apicaddy.com:8443/cas/logout");
+	 * HttpSession session = request.getSession(false); session.invalidate();
+	 * Cookie[] cookies = request.getCookies(); if(cookies!=null&&cookies.length>0)
+	 * { for (Cookie cookie : cookies) { cookie.setMaxAge(0);
+	 * cookie.setDomain("app1.cas.com"); cookie.setPath("/client");
+	 * response.addCookie(cookie); } } }
+	 */
+
 	@RequestMapping("/logout")
-	public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		HttpUtil.doGet("https://cas.apicaddy.com:8443/cas/logout");
-		HttpSession session = request.getSession(false);
+	public String loginOut(HttpSession session) {
 		session.invalidate();
-		session.removeAttribute("id");
-		Cookie[] cookies = request.getCookies();
-		if(cookies!=null&&cookies.length>0) {
-			for (Cookie cookie : cookies) {
-				cookie.setMaxAge(0);
-				cookie.setDomain("app1.cas.com");
-				cookie.setPath("/client");
-				response.addCookie(cookie);
-			}
-		}
-		response.sendRedirect("/client");
+		return "redirect:https://cas.apicaddy.com:8443/cas/logout?service=https://app1.cas.com:7443/client";
 	}
+
 }
