@@ -28,7 +28,7 @@
 		</init-param>
 		<init-param>
 			<param-name>serverName</param-name>
-			<param-value>https://app1.cas.com:7443</param-value>
+			<param-value>http://app2.cas.com:8060</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>
@@ -45,7 +45,7 @@
 		</init-param>
 		<init-param>
 			<param-name>serverName</param-name>
-			<param-value>https://app1.cas.com:7443</param-value>
+			<param-value>http://app2.cas.com:8060</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>

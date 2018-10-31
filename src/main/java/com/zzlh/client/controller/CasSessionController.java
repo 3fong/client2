@@ -14,21 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class CasSessionController {
 
-	/*
-	 * @RequestMapping("/logout") public void logout(HttpServletRequest request,
-	 * HttpServletResponse response) throws IOException {
-	 * response.sendRedirect("https://cas.apicaddy.com:8443/cas/logout");
-	 * HttpSession session = request.getSession(false); session.invalidate();
-	 * Cookie[] cookies = request.getCookies(); if(cookies!=null&&cookies.length>0)
-	 * { for (Cookie cookie : cookies) { cookie.setMaxAge(0);
-	 * cookie.setDomain("app1.cas.com"); cookie.setPath("/client");
-	 * response.addCookie(cookie); } } }
-	 */
-
 	@RequestMapping("/logout")
 	public String loginOut(HttpSession session) {
 		session.invalidate();
-		return "redirect:https://cas.apicaddy.com:8443/cas/logout?service=https://app1.cas.com:7443/client";
+		return "redirect:https://cas.apicaddy.com:8443/cas/logout?service=http://app2.cas.com:8060/client";
 	}
 
 }
