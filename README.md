@@ -13,7 +13,7 @@ pom.xml中引入cas-client-core
     <version>${java.cas.client.version}</version>
 </dependency>
 ```
-> 当然还可以引入其他代理,集成tomcat,jboss等服务器依赖,以满足自己不同的业务需求;
+> 当然还可以引入其他代理,集成tomcat,jboss等servlet容器依赖,以满足自己不同的业务需求;
 
 #### 配置
 - 
